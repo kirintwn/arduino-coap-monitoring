@@ -1,6 +1,7 @@
 var coap = require("coap");
 var server = coap.createServer();
 var stdin = process.openStdin();
+
 var command = "same";
 
 stdin.addListener("data", function(d) {

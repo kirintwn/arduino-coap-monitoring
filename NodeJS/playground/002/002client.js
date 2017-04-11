@@ -30,6 +30,7 @@ var senseTemp = () => {
 var updateData = () => {
     getTemp((tempData) => {
         var req = coap.request({
+            host: "192.168.0.11",
             pathname: `/${tempData}`,
             options: {
                 "Accept": "application/json"
