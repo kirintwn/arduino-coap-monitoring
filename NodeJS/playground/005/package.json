@@ -1,0 +1,17 @@
+{
+  "name": "005",
+  "version": "1.0.0",
+  "description": "",
+  "main": "002server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "coap": "^0.21.0",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.4",
+    "querystring": "^0.2.0"
+  }
+}
