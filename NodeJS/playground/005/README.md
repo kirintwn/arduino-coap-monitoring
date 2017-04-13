@@ -1,5 +1,5 @@
 # Node.JS Server v5.0.0
->Implement with express, coap, mongoose
+>Implementing with with express, coap, mongoose
 
 ## How to Use
 1. Config correct host and mongoDB server
