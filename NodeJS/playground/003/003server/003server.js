@@ -23,16 +23,21 @@ var updateData = (sensorName , tempNow , now) => {
     sensorData.findOneAndUpdate(query , update , options , (error , result) => {
         if(error) return;
         console.log("new temp data:");
-        console.log(JSON.stringify(result) , undefined , 2);
+        console.log(JSON.stringify(result , undefined , 2));
     });
 }
 
 stdin.addListener("data", (d) => command = d.toString().trim());
 
 server.on("request", (req, res) => {
-    var sensorName = url.split('/')[1];
+    var sensorName = req.url.split('/')[1];
     var tempNow = req.url.split('/')[2];
     var now = new Date().toString();
+
+    console.log(req.headers);
+    console.log(sensorName);
+    console.log(now);
+
 
     if (req.headers["Accept"] != "application/json") {
         res.code = "4.06";
