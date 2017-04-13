@@ -5,7 +5,7 @@ var stdin = process.openStdin();
 
 var {mongoose} = require("./db-config/mongoose_cfg.js");
 var {arduinoData} = require("./models/arduinoData.js");
-var expressServer = require("./express.js");
+var {app} = require("./express.js");
 
 var command = "same";
 
@@ -31,8 +31,6 @@ var updateData = (machineNum , LEDstate , temperature , now) => {
         console.log(JSON.stringify(result , undefined , 2));
     });
 }
-
-stdin.addListener("data", (d) => command = d.toString().trim());
 
 server.on("request", (req, res) => {
     if (req.headers["Accept"] != "application/json") {
@@ -64,3 +62,11 @@ server.on("request", (req, res) => {
 server.listen( () => {
     console.log("server started");
 });
+
+app.get("/LEDchange/:LEDstate" , (req , res) => {
+    console.log("HTTP REQUEST TO CHANGE LED TO:" , req.params.LEDstate);
+    command = req.params.LEDstate;
+
+    res.send(`LED turned ${req.params.LEDstate}`);
+});
+//stdin.addListener("data", (d) => command = d.toString().trim());

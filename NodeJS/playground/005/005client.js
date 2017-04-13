@@ -3,7 +3,7 @@ var bl = require('bl');
 
 ///////////////////////////////////////////////
 var LED = 0;
-var temperature = -1;
+var temperature = 25;
 
 var getData = (callback) => {
     var LEDstate;
@@ -27,7 +27,7 @@ var randomIntInc = (low, high) => {
 
 var LEDmonitor = () => {
     getData((LEDstate , sensorData) => {
-        if(sensorData.temperature >= 35) {
+        if(sensorData.temperature >= 33) {
             console.log("LEDmonitor turning LED on");
             LED = 1;
         }
@@ -37,7 +37,7 @@ var LEDmonitor = () => {
     });
 }
 var senseTemp = () => {
-   temperature = randomIntInc(5 , 40);
+   temperature += randomIntInc(-3 , +4);
 }
 ///////////////////////////////////////////////
 var sendData = () => {
@@ -92,6 +92,6 @@ var printState = () => {
 
 
 setInterval(senseTemp, 1*1000);   //mock temperature sensor , sense temperature every 1 sec
-setInterval(LEDmonitor, 10*1000); //LED turns 1 when temperature >= 35 , sense every 10 sec
-setInterval(sendData, 5*1000);  //send temperature data every 5sec through HTTP request , change LED according to response
+setInterval(LEDmonitor, 10*1000); //LED turns 1 when temperature >= 33 , sense every 1 sec
+setInterval(sendData, 1*1000);  //send temperature data every 5sec through HTTP request , change LED according to response
 setInterval(printState, 1*1000);  //print LED and temperature status on screen
