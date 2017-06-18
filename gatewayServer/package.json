@@ -1,0 +1,20 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "rewirte from playgorund 005",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kirintw",
+  "license": "ISC",
+  "dependencies": {
+    "bl": "^1.2.1",
+    "body-parser": "^1.17.2",
+    "coap": "^0.21.0",
+    "config-lite": "^2.0.0",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.6",
+    "querystring": "^0.2.0"
+  }
+}

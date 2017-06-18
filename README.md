@@ -1,33 +1,16 @@
 # IOT Term Project
-:::info
-侯仲威、邱垂浩
-:::
 ## Requirement
 ![](https://i.imgur.com/9vrKpEM.png)
-
-
 
 ## Simple Software Model
 ![](https://i.imgur.com/r7TBopx.jpg)
 
 Using [Draw.io](https://www.draw.io/#G0B3VhXejlk0FEODF3Y0oxZ2pDUEk)
 
-
-
 ## Implementation
-
-### 第一階段:
-研究CoAP, 先實做Arduino與NodeJS的部份
-- Arduino端所有的Hardware Control
-- Arduino端 CoAP Server
-- NodeJS端 CoAP Client
-
-希望達成目標:
-- 能在NodeJS端看到Arduino 溫度與LED燈狀態
-- 能在NodeJS端將Arduino狀態寫入MongoDB
-- 能從NodeJS端控制LED燈開關
-
-
+- Arduino send CoAP request to send data
+- gateway server implemented in Node.js
+- Android client send HTTP request to get data
 
 ## Resource
 - Arduino Dev.
