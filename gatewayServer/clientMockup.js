@@ -28,11 +28,22 @@ var sendData = () => {
 
     var req = coap.request({
         //host: "192.168.0.11",
-        pathname: `/0/LEDstate=${LED}&temperature=${temperature}`,
+        pathname: "/0/",
+        method: "POST",
         options: {
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Content-Format": "application/json"
         }
     });
+
+    var arduinoJSON = {
+        sensorData: {
+            temperature: temperature
+        },
+        LEDstate: LED
+    }
+
+    req.write(JSON.stringify(arduinoJSON));
 
     req.on("response" , (res) => {
         if (res.code !== "2.05") {
@@ -74,4 +85,4 @@ var printState = () => {
 setInterval(senseTemp, 1*1000);   //mock temperature sensor , sense temperature every 1 sec
 setInterval(LEDmonitor, 10*1000); //LED turns 1 when temperature >= 33 , sense every 1 sec
 setInterval(sendData, 1*1000);  //send temperature data every 5sec through HTTP request , change LED according to response
-setInterval(printState, 1*1000);  //print LED and temperature status on screen
+//setInterval(printState, 1*1000);  //print LED and temperature status on screen

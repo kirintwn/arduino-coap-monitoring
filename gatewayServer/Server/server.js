@@ -1,6 +1,7 @@
 const bodyParser = require("body-parser");
-const querystring = require("querystring");
 const coap = require("coap");
+const bl = require("bl");
+//const querystring = require("querystring");
 var server = coap.createServer();
 
 var {mongoose} = require("./database/mongooseConfig.js");
@@ -16,18 +17,26 @@ server.on("request" , (req , res) => {
         return res.end();
     }
     res.setOption("Content-Format" , "application/json");
-
-    // coap://example.com/0/LEDstate=0&temperature=25
+    /*  request format reference
+        coap://example.com/0/
+        var arduinoData = {
+            sensorData: {
+                temperature: 32
+            },
+            LEDstate: 1
+        }
+    */
     var machineNum = req.url.split('/')[1];
-    var query = req.url.split('/')[2];
-    var parsedString = querystring.parse(query);
+    req.pipe(bl(function(err, data) {
+        var arduinoJSON = JSON.parse(data);
 
-    var LEDstate = parsedString.LEDstate;
-    var temperature = parsedString.temperature;
-    var now = new Date().toString();
+        var LEDstate = arduinoJSON.LEDstate;
+        var temperature = arduinoJSON.sensorData.temperature;
+        var now = new Date().toString();
 
-    console.log("Updating Data...");
-    updateData(machineNum , LEDstate , temperature , now);
+        console.log("Updating Data...");
+        updateData(machineNum , LEDstate , temperature , now);
+    }))
 
     var payload = {
         LEDswitch: currentCommand
