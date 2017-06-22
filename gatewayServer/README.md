@@ -8,7 +8,6 @@
     - mongoose 4.10.6
     - coap 0.21.0
     - body-parser 1.17.2
-    - querystring 0.2.0
     - bl 1.2.1
     - config-lite 2.0.0
 
@@ -29,7 +28,7 @@ It also provides HTTP API for mobile application to get the data from the IOT de
     - screenshot with JSONView add-on
     ![](https://i.imgur.com/3VNDkZP.png)
 - to change LED state with HTTP API
-    - uri: `http://localhost:3000/LED`
+    - url: `http://localhost:3000/LED`
     - method: `PUT`
     - body: `{"LEDstate": "off/on"}` in JSON format
     - response is `LED turned off/on`
@@ -37,20 +36,20 @@ It also provides HTTP API for mobile application to get the data from the IOT de
 
 ## Communication Between Client and Server
 - Client sends CoAP request
-    - uri: `coap://localhost/0/`
+    - url: `coap://localhost/0/`
         - The pathname `/0/` means Machine No.0
     - header:
         - `"Accept": "application/json"`
         - `"Content-Format": "application/json"`
     - method: `POST`
-    - body: A JSON object `arduinoJSON` consisted of
+    - payload: A JSON object `requestPayload` consisted of
         - `sensorData`
             - int `temperature`
         - int `LEDstate`(only 0 or 1)
 
 - Server reads the request, sending back response
     - header: `"Content-Format" , "application/json"`
-    - body: A JSON object `payload` consisted of
+    - payload: A JSON object `responsePayload` consisted of
         - string `LEDswitch` (on , off , same)
 
 - Client reacts according to `LEDswitch`

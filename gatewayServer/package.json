@@ -15,6 +15,5 @@
     "config-lite": "^2.0.0",
     "express": "^4.15.3",
     "mongoose": "^4.10.6",
-    "querystring": "^0.2.0"
   }
 }

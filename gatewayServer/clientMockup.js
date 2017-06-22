@@ -36,24 +36,24 @@ var sendData = () => {
         }
     });
 
-    var arduinoJSON = {
+    var requestPayload = {
         sensorData: {
             temperature: temperature
         },
         LEDstate: LED
     }
 
-    req.write(JSON.stringify(arduinoJSON));
+    req.write(JSON.stringify(requestPayload));
 
     req.on("response" , (res) => {
-        if (res.code !== "2.05") {
+        if (res.code !== "2.04") {
             console.log("bad res!");
             //return process.exit(1);
         }
         res.pipe(bl(function(err, data) {
-            var payload = JSON.parse(data);
-            console.log("response: " , payload);
-            LEDchanger(payload);
+            var responsePayload = JSON.parse(data);
+            console.log("response: " , responsePayload);
+            LEDchanger(responsePayload);
         }))
     });
     req.end();
@@ -61,12 +61,12 @@ var sendData = () => {
 
 }
 ///////////////////////////////////////
-var LEDchanger = (payload) => {
-    if(payload.LEDswitch == "on") {
+var LEDchanger = (responseBody) => {
+    if(responseBody.LEDswitch == "on") {
         LED = 1;
         console.log("LED turned ON");
     }
-    else if(payload.LEDswitch == "off") {
+    else if(responseBody.LEDswitch == "off") {
         LED = 0;
         console.log("LED turned OFF");
     }
