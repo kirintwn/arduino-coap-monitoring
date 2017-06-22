@@ -31,7 +31,7 @@ It also provides HTTP API for mobile application to get the data from the IOT de
     - uri: `http://localhost:3000/LED`
     - method: `PUT`
     - body: `{"LEDstate": "YYYYYY / NNNNNN / AAAAAA"}` in JSON format
-    - response is `LED turned ON/OFF/AUTO`
+    - response is `ON / OFF / AUTO`
     - Postman screenshot ![](http://i.imgur.com/iup53YU.png)
 
 ## Communication Between Client and Server
