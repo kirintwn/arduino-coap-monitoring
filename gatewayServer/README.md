@@ -52,7 +52,7 @@ It also provides HTTP API for mobile application to get the data from the IOT de
     - payload: A JSON object `responsePayload` consisted of
         - string `LED` (YYYYYY / NNNNNN / AAAAAA)
 
-- Client reacts according to `LEDswitch`
+- Client reacts according to `LED`
     - `YYYYYY` -> turning on LED
     - `NNNNNN` -> turning off LED
     - `AAAAAA` -> turing auto detect mode (default)
