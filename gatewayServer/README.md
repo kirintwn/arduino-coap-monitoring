@@ -28,20 +28,20 @@ It also provides HTTP API for mobile application to get the data from the IOT de
     - screenshot with JSONView add-on
     ![](https://i.imgur.com/3VNDkZP.png)
 - to change LED state with HTTP API
-    - url: `http://localhost:3000/LED`
+    - uri: `http://localhost:3000/LED`
     - method: `PUT`
-    - body: `{"LEDstate": "off/on"}` in JSON format
-    - response is `LED turned off/on`
-    - Postman screenshot ![](https://i.imgur.com/Jb7M2F4.png)
+    - body: `{"LEDstate": "YYYYYY / NNNNNN / AAAAAA"}` in JSON format
+    - response is `LED turned ON/OFF/AUTO`
+    - Postman screenshot ![](http://i.imgur.com/iup53YU.png)
 
 ## Communication Between Client and Server
 - Client sends CoAP request
-    - url: `coap://localhost/0/`
+    - uri: `coap://localhost/0/`
         - The pathname `/0/` means Machine No.0
     - header:
         - `"Accept": "application/json"`
         - `"Content-Format": "application/json"`
-    - method: `POST`
+    - method: `PUT`
     - payload: A JSON object `requestPayload` consisted of
         - `sensorData`
             - int `temperature`
@@ -50,12 +50,12 @@ It also provides HTTP API for mobile application to get the data from the IOT de
 - Server reads the request, sending back response
     - header: `"Content-Format" , "application/json"`
     - payload: A JSON object `responsePayload` consisted of
-        - string `LEDswitch` (on , off , same)
+        - string `LED` (YYYYYY / NNNNNN / AAAAAA)
 
 - Client reacts according to `LEDswitch`
-    - `on` -> turning on LED
-    - `off` -> turning off LED
-    - `same` -> don't change LED
+    - `YYYYYY` -> turning on LED
+    - `NNNNNN` -> turning off LED
+    - `AAAAAA` -> turing auto detect mode (default)
 
 ## License
 MIT © Kirintw

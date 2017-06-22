@@ -9,12 +9,12 @@ var {arduinoData} = require("./models/arduinoData.js");
 var {updateData} = require("./updateData.js");
 var {app} = require("./webAPI.js");
 
-var currentCommand = "same";
+var currentCommand = "AAAAAA";
 
 server.on("request" , (req , res) => {
     if (req.headers["Accept"] != "application/json" ||
     req.headers["Content-Format"] != "application/json" ||
-    req.method != "POST") {
+    req.method != "PUT") {
         res.code = "4.06";
         return res.end();
     }
@@ -33,6 +33,11 @@ server.on("request" , (req , res) => {
     req.pipe(bl(function(err, data) {
         var requestPayload = JSON.parse(data);
 
+        if(isNaN(requestPayload.LEDstate) || isNaN(requestPayload.sensorData.temperature)) {
+            res.code = "4.05";
+            return res.end();
+        }
+
         var LEDstate = requestPayload.LEDstate;
         var temperature = requestPayload.sensorData.temperature;
         var now = new Date().toString();
@@ -42,10 +47,8 @@ server.on("request" , (req , res) => {
     }))
 
     var responsePayload = {
-        LEDswitch: currentCommand
+        LED: currentCommand
     };
-
-    currentCommand = "same"; //reset command
 
     res.end(JSON.stringify(responsePayload));
 });
@@ -60,8 +63,19 @@ app.put("/LED" , (req , res) => {
     var LEDstate = req.body.LEDstate;
     console.log(req.body.LEDstate);
     console.log("REQUEST TO CHANGE LED TO" , LEDstate);
-
-    currentCommand = LEDstate;
-
-    res.send(`LED turned ${currentCommand}`);
+    if(LEDstate == "AAAAAA" || LEDstate == "YYYYYY" || LEDstate == "NNNNNN") {
+        currentCommand = LEDstate;
+        if(LEDstate == "AAAAAA") {
+            res.send("AUTO");
+        }
+        else if(LEDstate == "YYYYYY") {
+            res.send("ON");
+        }
+        else if(LEDstate == "NNNNNN") {
+            res.send("OFF");
+        }
+    }
+    else {
+        res.status(400).send();
+    }
 });
