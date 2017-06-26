@@ -13,7 +13,8 @@
     "body-parser": "^1.17.2",
     "coap": "^0.21.0",
     "config-lite": "^2.0.0",
+    "cors": "^2.8.3",
     "express": "^4.15.3",
-    "mongoose": "^4.10.6",
+    "mongoose": "^4.10.6"
   }
 }

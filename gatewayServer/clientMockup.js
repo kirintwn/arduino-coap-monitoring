@@ -3,21 +3,21 @@ const bl = require("bl");
 
 ///////////////////////////////////////
 var LED = 0;
-var temperature = 25.0;
+var temperature = 24.53;
 
 var randomIntInc = (low, high) => {
     return Math.floor(Math.random() * (high - low + 1) + low);
 }
 
 var senseTemp = () => {
-   temperature += randomIntInc(-3 , +4);
+   temperature = temperature + randomIntInc(-4 , +4);
 }
 ///////////////////////////////////////
 var sendData = () => {
     console.log("Sending Data to CoAP Server");
 
     var req = coap.request({
-        //host: "192.168.0.11",
+        //host: "myIP",
         pathname: "/0/",
         method: "PUT",
         options: {
@@ -28,7 +28,7 @@ var sendData = () => {
 
     var requestPayload = {
         sensorData: {
-            temperature: temperature
+            temperature: temperature.toFixed(1)
         },
         LEDstate: LED
     }
@@ -64,7 +64,7 @@ var LEDchanger = (responseBody) => {
         console.log("LED turned AUTO mode");
 
         var LEDmonitor = () => {
-            if(temperature >= 33) {
+            if(temperature >= 32) {
                 console.log("temperature too high!");
                 LED = 1;
             }

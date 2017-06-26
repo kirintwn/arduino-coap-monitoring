@@ -31,19 +31,21 @@ server.on("request" , (req , res) => {
     */
     var machineNum = req.url.split('/')[1];
     req.pipe(bl(function(err, data) {
-        var requestPayload = JSON.parse(data);
-
-        if(isNaN(requestPayload.LEDstate) || isNaN(requestPayload.sensorData.temperature)) {
+        var requestPayload;
+        try {
+            requestPayload = JSON.parse(data);
+        } catch(e) {
             res.code = "4.05";
             return res.end();
         }
 
-        var LEDstate = requestPayload.LEDstate;
-        var temperature = requestPayload.sensorData.temperature;
-        var now = new Date().toString();
+            var LEDstate = requestPayload.LEDstate;
+            var temperature = requestPayload.sensorData.temperature;
+            console.log("temperature: " , temperature);
+            var now = new Date();
 
-        console.log("Updating Data...");
-        updateData(machineNum , LEDstate , temperature , now);
+            console.log("Updating Data...");
+            updateData(machineNum , LEDstate , temperature , now);
     }))
 
     var responsePayload = {
@@ -66,13 +68,13 @@ app.put("/LED" , (req , res) => {
     if(LEDstate == "AAAAAA" || LEDstate == "YYYYYY" || LEDstate == "NNNNNN") {
         currentCommand = LEDstate;
         if(LEDstate == "AAAAAA") {
-            res.send("AUTO");
+            res.status(202).send();
         }
         else if(LEDstate == "YYYYYY") {
-            res.send("ON");
+            res.status(202).send();
         }
         else if(LEDstate == "NNNNNN") {
-            res.send("OFF");
+            res.status(202).send();
         }
     }
     else {

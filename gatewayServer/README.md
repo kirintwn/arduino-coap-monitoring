@@ -7,6 +7,7 @@
     - express 4.15.3
     - mongoose 4.10.6
     - coap 0.21.0
+    - cors 2.8.3
     - body-parser 1.17.2
     - bl 1.2.1
     - config-lite 2.0.0
@@ -24,11 +25,19 @@ It also provides HTTP API for mobile application to get the data from the IOT de
 ## Usage
 - run the server `node Server/server.js`
 - run the mockup client (IOT device) `node clientMockup.js`
-- go to `http://localhost:3000/arduinoData/0` to see HTTP API
-    - screenshot with JSONView add-on
-    ![](https://i.imgur.com/3VNDkZP.png)
+- go to `http://localhost:3030/arduinoData/0`
+    - to see recent 20 records
+- go to `http://localhost:3030/temperature/lowest/0`
+    - to see record lowest temperature
+- go to `http://localhost:3030/temperature/highest/0`
+    - to see record highest temperature
+- go to `http://localhost:3030/temperature/lowestHours/:hours/0`
+    - to see lowest temperature in past :hours
+- go to `http://localhost:3030/temperature/highestHours/:hours/0`
+    - to see highest temperature in past :hours
+
 - to change LED state with HTTP API
-    - uri: `http://localhost:3000/LED`
+    - uri: `http://localhost:3030/LED`
     - method: `PUT`
     - body: `{"LEDstate": "YYYYYY / NNNNNN / AAAAAA"}` in JSON format
     - response is `ON / OFF / AUTO`
@@ -44,7 +53,7 @@ It also provides HTTP API for mobile application to get the data from the IOT de
     - method: `PUT`
     - payload: A JSON object `requestPayload` consisted of
         - `sensorData`
-            - int `temperature`
+            - Number `temperature`
         - int `LEDstate`(only 0 or 1)
 
 - Server reads the request, sending back response

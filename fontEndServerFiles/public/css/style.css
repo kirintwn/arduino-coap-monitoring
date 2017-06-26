@@ -1,0 +1,238 @@
+* {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  //border: solid 1px #666;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+  background-color: #F8F8FF;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold;
+}
+
+nav.navbar {
+  transition: 0.5s;
+}
+
+nav.navbar.navbar-default.navbar-fixed-top {
+  background-color: black;
+}
+nav.navbar.navbar-default.navbar-fixed-top a {
+  color: white;
+  transition: 0.5s;
+}
+nav.navbar.navbar-default.navbar-fixed-top a:hover {
+  color: #5c8a8a;
+}
+
+#Dashboard {
+    color: #5c8a8a;
+}
+
+.row .spacer {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+}
+
+.row {
+  display: inline-block;
+  width: 100%;
+}
+.row .col-md-8.diagram {
+  height: 500px;
+}
+.row .col-md-8.diagram .name {
+  font-weight: bold;
+  font-size: 30px;
+  width: 100%;
+  height: 20%;
+  line-height: 94px;
+  text-align: center;
+  position: relative;
+}
+.row .col-md-8.diagram .diagramTrue {
+  height: 80%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.row .col-md-4.led {
+  height: 500px;
+}
+.row .col-md-4.led .nameLED {
+    font-weight: bold;
+    font-size: 30px;
+    height: 20%;
+    width: 100%;
+    line-height: 94px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    text-align: center;
+}
+.row .col-md-4.led svg {
+    height: 200px;
+    border: 2px solid;
+    display: inline-block;
+    color: #F8F8FF;
+}
+.row .col-md-4.led #pic1 {
+    width: 80%;
+    margin-top: 50px;
+}
+.row .col-md-4.led #pic1 circle {
+}
+.row .col-md-4.led .buttons {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F8F8FF;
+    margin-top: 40px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.row .col-md-4.led .buttons .button1 {
+  border-radius: 50px;
+  font-weight: bold;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border: 2px solid #5c8a8a;
+  display: inline-block;
+}
+.row .col-md-4.led .buttons .button1:hover {
+  background-color: #5c8a8a;
+  color: white;
+}
+.row .col-md-4.led .buttons .button2 {
+  border-radius: 50px;
+  font-weight: bold;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border: 2px solid #5c8a8a;
+  display: inline-block;
+}
+.row .col-md-4.led .buttons .button2:hover {
+  background-color: #5c8a8a;
+  color: white;
+}
+.row .col-md-4.led .buttons .button3 {
+  border-radius: 50px;
+  font-weight: bold;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border: 2px solid #5c8a8a;
+  display: inline-block;
+}
+.row .col-md-4.led .buttons .button3:hover {
+  background-color: #5c8a8a;
+  color: white;
+}
+
+.row1 {
+  margin-top: 50px;
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+}
+.row1 .col-md-6.highLow {
+  display: inline-block;
+}
+.row1 .col-md-6.highLow .pre-box1 {
+  display: inline-block;
+  margin-left: 45%;
+}
+.row1 .col-md-6.highLow .pre-box1 .box {
+  display: inline-block;
+  height: 200px;
+}
+.row1 .col-md-6.highLow .pre-box1 .box .boxTitle {
+  width: 200px;
+}
+.row1 .col-md-6.highLow .pre-box1 .box .boxBodyHot {
+  height: 100px;
+  width: 100px;
+  line-height: 94px;
+  border: 3px solid #FF3333;
+  border-radius: 100px;
+  margin-top: 8%;
+}
+.row1 .col-md-6.highLow .pre-box1 .box .boxBodyCold {
+  height: 100px;
+  width: 100px;
+  line-height: 94px;
+  border: 3px solid #77DDFF;
+  border-radius: 100px;
+  margin-top: 8%;
+}
+.row1 .col-md-6.highLow {
+  display: inline-block;
+}
+.row1 .col-md-6.highLow .pre-box2 {
+  display: inline-block;
+  margin-right: 45%;
+}
+.row1 .col-md-6.highLow .pre-box2 .box {
+  display: inline-block;
+  height: 200px;
+}
+.row1 .col-md-6.highLow .pre-box2 .box .boxTitle {
+  width: 200px;
+}
+.row1 .col-md-6.highLow .pre-box2 .box .boxBodyHot {
+  height: 100px;
+  width: 100px;
+  line-height: 94px;
+  border: 3px solid #FF3333;
+  border-radius: 100px;
+  margin-top: 8%;
+}
+.row1 .col-md-6.highLow .pre-box2 .box .boxBodyCold {
+  height: 100px;
+  width: 100px;
+  line-height: 94px;
+  border: 3px solid #77DDFF;
+  border-radius: 100px;
+  margin-top: 8%;
+}
+.canvasjs-chart-credit {
+   display: none;
+}
+
+footer.jumbotron {
+  text-align: center;
+  background-color: #5c8a8a;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  background-attachment: fixed;
+  margin-bottom: -10px;
+  height: 100px;
+  margin-top: 70px;
+  width: 100%;
+  background-size: cover;
+}

@@ -16,9 +16,8 @@ var arduinoData = mongoose.model("arduinoData" , {
         required: true,
     },
     timeUpdate: {
-        type: String,
-        required: true,
-        minlength: 1
+        type: Date,
+        default: Date.now
     }
 });
 

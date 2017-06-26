@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>IOT-Project</title>
+
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascript/canvasjs.min.js"></script>
+  <script type="text/javascript" src="javascript/realTimeChart.js"></script>
+  <script type="text/javascript" src="javascript/botton.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header"><a class="navbar-brand">IOT-Project</a></div>
+    <div class="navbar-collapse collapse">
+      <div class="nav navbar-nav navbar-right">
+        <li><a href="index.html"  id="Dashboard"> Dashboard</a></li>
+        <li><a href="doc.html"> Document</a></li>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="row">
+  <div class="spacer"></div>
+</div>
+<div class="row">
+  <div class="col-md-8 diagram">
+    <div class="name" id="nameTemp">Arduino Live Temperature : --°C</div>
+    <div class="diagramTrue" id="chartContainer"></div>
+  </div>
+  <div class="col-md-4 led">
+    <div class="nameLED">LED Display & Switch</div>
+    <svg id="pic1" viewbox="-50 -50 100 100">
+      <circle id="circle1" cx="0" cy="0" r="40"> </circle>
+    </svg>
+    <div class="buttons">
+      <div class="button1" onclick="click1()" id="button1">ON</div>
+      <div class="button2" onclick="click2()" id="button2">OFF</div>
+      <div class="button3" onclick="click3()"  id="button3">AUTO</div>
+    </div>
+  </div>
+</div>
+<div class="row1">
+  <div class="col-md-6 highLow">
+    <div class="pre-box1">
+      <div class="box">
+        <div class="boxTitle">Record High</div>
+        <div class="boxBodyHot" id="recordHigh">--°C</div>
+      </div>
+      <div class="box">
+        <div class="boxTitle">Record Low</div>
+        <div class="boxBodyCold" id="recordLow">--°C</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 highLow">
+    <div class="pre-box2">
+      <div class="box">
+        <div class="boxTitle">Last 10sec High</div>
+        <div class="boxBodyHot" id="10High">--°C</div>
+      </div>
+      <div class="box">
+        <div class="boxTitle">Last 10sec Low</div>
+        <div class="boxBodyCold" id="10Low">--°C</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="jumbotron">
+  <h3>MIT © Kirintw</h3>
+</footer>
+</body>
+<script type="text/javascript" src="javascript/notify.js"></script>
+<script type="text/javascript" src="javascript/highLow.js"></script>
+</html>
