@@ -5,8 +5,12 @@
 GitHub page: https://github.com/cy91244/IOT-Project/
 :::
 
-## Requirement
-![](https://i.imgur.com/Ec0Fa3b.png)
+## Specification
+- Read temperature sensor on Arduino periodically, 
+- Send the data to gateway server using `CoAP` protocol
+- gateway server record the temperature to `MongoDB`
+- Front-End Web Client using `REST API` to get the records from database
+- Display the data and render to line chart using `CanvasJS`
 
 ## Simple Software Model 
 ![](https://i.imgur.com/bzScuyN.png)
