@@ -1,9 +1,4 @@
 # IOT Term Project
-:::info
-邱垂浩 侯仲威
-
-GitHub page: https://github.com/cy91244/IOT-Project/
-:::
 
 ## Specification
 - Read temperature sensor on Arduino periodically, 
